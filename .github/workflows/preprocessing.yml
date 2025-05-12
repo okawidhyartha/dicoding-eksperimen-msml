@@ -35,4 +35,4 @@ jobs:
           path: |
             preprocessing/diabetes_preprocessing/diabetes_train.csv
             preprocessing/diabetes_preprocessing/diabetes_test.csv
-            preprocessing/label_encoded_values.csv
+            preprocessing/diabetes_preprocessing/label_encoded_values.csv
