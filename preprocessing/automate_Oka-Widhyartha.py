@@ -34,10 +34,13 @@ for i, class_name in label_encoded_dict.items():
     print(f"{i}: {class_name}")
 
 # save label encoded values to a CSV file
+output_dir = os.path.join(os.path.dirname(__file__), "diabetes_preprocessing")
+os.makedirs(output_dir, exist_ok=True)
+
 label_encoded_df = pd.DataFrame(list(label_encoded_dict.items()), columns=["label", "class"])
-label_encoded_file_path = os.path.join(os.path.dirname(__file__), "label_encoded_values.csv")
+label_encoded_file_path = os.path.join(output_dir, "label_encoded_values.csv")
 label_encoded_df.to_csv(label_encoded_file_path, index=False)
-print("Label encoded values saved to label_encoded_values.csv")
+print("Label encoded values saved to diabetes_preprocessing/label_encoded_values.csv")
 
 # split the data into features and target
 X = df_raw.drop(columns=["ID", "No_Pation", "CLASS"])
@@ -71,9 +74,6 @@ print("First few rows of the final test set:")
 print(df_test.head())
 
 # save the train and test data to a new CSV file
-output_dir = os.path.join(os.path.dirname(__file__), "diabetes_preprocessing")
-os.makedirs(output_dir, exist_ok=True)
-
 train_file_path = os.path.join(output_dir, "diabetes_train.csv")
 test_file_path = os.path.join(output_dir, "diabetes_test.csv")
 
